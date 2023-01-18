@@ -5,6 +5,41 @@ import urllib.request
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common import exceptions
+
+def find_date(class_name, browser):
+    dates = browser.find_elements(By.CLASS_NAME, class_name)
+    available = len(dates)
+
+    if not available:
+        print("There are no more available dates")
+    else:
+        for d in dates:
+            d.click()
+            times = browser.find_elements(By.CLASS_NAME, "mdc-button")
+            
+            print("times:")
+            print(len(times))
+            
+            for t in times:
+                t.click()
+                
+                phone_number = browser.find_element(By.ID, "telephone")
+                phone_number.send_keys("6136681312")
+               
+                email = browser.find_element(By.ID, "email")
+                email.send_keys("edwardsongg@gmail.com")
+                name = browser.find_element(By.ID, "field2021")
+                name.send_keys("Edward Song")
+
+                browser.find_element(By.ID, "submit-btn").click()
+                break
+
+            break
+        
+            cur_link = browser.current_url
+
+    
 
 def doubles_adult(browser):
     dateTime = time.strftime("%H:%M")
@@ -25,6 +60,7 @@ def doubles_adult(browser):
     button = browser.find_element(By.ID, "submit-btn")
     button.click()
 
+    find_date("date-text", browser)
+
     time.sleep(5)
 
-    browser.quit()

@@ -5,7 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 def main():
     browser = webdriver.Chrome(ChromeDriverManager().install())
     print("yp")
-    doubles_adult(browser)
+    doubles_adult(browser) 
 
 if __name__ == "__main__":
     main()
