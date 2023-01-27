@@ -13,11 +13,18 @@ def find_date(class_name, browser):
 
     week_dates = browser.find_elements(By.CLASS_NAME, "title")
     print(len(week_dates))
-    if not len(week_dates):
+
+    available_times = browser.find_elements(By.CLASS_NAME, "ml-auto")
+
+    print("triangle:")
+    print(len(available_times))
+
+    if not len(week_dates) or len(available_times) == len(week_dates):
         print("There are no times this week")
         return
     else:
-        print("why")
+        print("stop")
+        print(len(week_dates))
         for date in week_dates:
             date.click()
 
